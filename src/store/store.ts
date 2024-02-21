@@ -1,14 +1,16 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import produceReducer from './slices/producesSlice';
 import fruitReducer from './slices/fruitSlice';
 import vegetableReducer from './slices/vegetableSlice';
 
+const rootReducer = combineReducers({
+  produce: produceReducer,
+  fruit: fruitReducer,
+  vegetable: vegetableReducer,
+});
+
 export const store = configureStore({
-  reducer: {
-    produce: produceReducer,
-    fruit: fruitReducer,
-    vegetable: vegetableReducer,
-  },
+  reducer: rootReducer,
 });
 
 export type RootState = ReturnType<typeof store.getState>;

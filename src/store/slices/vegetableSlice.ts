@@ -5,20 +5,23 @@ type VegetableItem = {
     name: string;
 }
 
-const initialFruitState: VegetableItem[] = [] as VegetableItem[];
-
+const initialVegetableState: VegetableItem[] = [];
 
 export const vegetableSlice = createSlice({
     name: 'vegetable',
-    initialState: initialFruitState,
+    initialState: initialVegetableState,
     reducers: {
-        addVegetable: (state, action: PayloadAction<object>) => {
-            state.push(action.payload as VegetableItem);
+        addVegetable: (state, action: PayloadAction<VegetableItem>) => {
+            state.push(action.payload);
         },
         removeVegetable: (state, action: PayloadAction<string>) => {
             return state.filter(item => item.name !== action.payload);
         },
+        shiftVegetable: (state) => {
+            return state.slice(1);
+        }
     },
 });
-export const { addVegetable, removeVegetable } = vegetableSlice.actions;
+
+export const { addVegetable, removeVegetable, shiftVegetable } = vegetableSlice.actions;
 export default vegetableSlice.reducer;
