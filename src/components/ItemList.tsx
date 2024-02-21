@@ -30,7 +30,7 @@ export default function ItemList() {
             dispatch(removeFruit(name));
             dispatch(removeVegetable(name));
             dispatch(addProduce(value as any));
-        }, 10000);
+        }, 5000);
     };
 
     return (
